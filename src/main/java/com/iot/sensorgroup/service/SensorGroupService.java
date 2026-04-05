@@ -32,6 +32,16 @@ public class SensorGroupService {
      * Create a new sensor group
      */
     public SensorGroupDTO createSensorGroup(SensorGroupDTO sensorGroup) {
+        // Generate ID if not provided
+        if (sensorGroup.getId() == null) {
+            List<SensorGroupDTO> all = sensorGroupRepository.findAll();
+            Long maxId = all.stream()
+                    .map(SensorGroupDTO::getId)
+                    .filter(id -> id != null)
+                    .max(Long::compare)
+                    .orElse(0L);
+            sensorGroup.setId(maxId + 1);
+        }
         return sensorGroupRepository.save(sensorGroup);
     }
 
