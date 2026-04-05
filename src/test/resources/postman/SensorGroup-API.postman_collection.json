@@ -1,0 +1,172 @@
+{
+	"info": {
+		"name": "SensorGroup API",
+		"description": "Collection for testing SensorGroup REST API endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Sensor Groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/sensorgroups",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"sensorgroups"
+					]
+				},
+				"description": "Retrieve all sensor groups"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sensor Group by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/sensorgroups/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"sensorgroups",
+						"1"
+					]
+				},
+				"description": "Retrieve a sensor group by its ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sensor Group",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Building A Sensors\",\n  \"services\": [\n    \"Temperature Monitor\",\n    \"Humidity Sensor\",\n    \"Air Quality\"\n  ],\n  \"readings\": [\n    {\n      \"type\": \"temperature\",\n      \"unit\": 22.5,\n      \"timestamp\": \"2026-04-05T10:30:00Z\"\n    },\n    {\n      \"type\": \"humidity\",\n      \"unit\": 65.0,\n      \"timestamp\": \"2026-04-05T10:30:00Z\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/sensorgroups",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"sensorgroups"
+					]
+				},
+				"description": "Create a new sensor group"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Sensor Group - Minimal",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Lab Sensors\",\n  \"services\": [\"Pressure Sensor\"],\n  \"readings\": []\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/sensorgroups",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"sensorgroups"
+					]
+				},
+				"description": "Create a new sensor group with minimal data"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Sensor Group",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 1,\n  \"name\": \"Building A Sensors - Updated\",\n  \"services\": [\n    \"Temperature Monitor\",\n    \"Humidity Sensor\",\n    \"Air Quality\",\n    \"CO2 Monitor\"\n  ],\n  \"readings\": [\n    {\n      \"type\": \"temperature\",\n      \"unit\": 23.0,\n      \"timestamp\": \"2026-04-05T11:00:00Z\"\n    },\n    {\n      \"type\": \"humidity\",\n      \"unit\": 68.5,\n      \"timestamp\": \"2026-04-05T11:00:00Z\"\n    },\n    {\n      \"type\": \"co2\",\n      \"unit\": 425.0,\n      \"timestamp\": \"2026-04-05T11:00:00Z\"\n    }\n  ]\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/sensorgroups/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"sensorgroups",
+						"1"
+					]
+				},
+				"description": "Update an existing sensor group by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sensor Group",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/sensorgroups/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"sensorgroups",
+						"1"
+					]
+				},
+				"description": "Delete a sensor group by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/actuator/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"actuator",
+						"health"
+					]
+				},
+				"description": "Check application health status"
+			},
+			"response": []
+		}
+	]
+}
