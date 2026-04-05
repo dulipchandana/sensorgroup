@@ -172,7 +172,7 @@ If ports 8080, 27017, or 8081 are already in use:
 
   ```
 
-  http://localhost:8080/actuator/health
+  http://localhost:8081/actuator/health
 
 ## License
 

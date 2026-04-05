@@ -6,20 +6,18 @@ services:
     container_name: sensorgroup-mongodb
     ports:
       - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: sensorgroup
+    command: mongod --noauth
     volumes:
       - mongo-data:/data/db
       - mongo-config:/data/configdb
     networks:
       - sensorgroup-network
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      test: mongosh /dev/null
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 20s
 
   mongo-express:
     image: mongo-express:latest
@@ -29,10 +27,8 @@ services:
       - "8081:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: admin
-      ME_CONFIG_MONGODB_ADMINPASSWORD: password
-      ME_CONFIG_MONGODB_URL: mongodb://admin:password@mongodb:27017/
-      ME_CONFIG_BASICAUTH_USERNAME: admin
-      ME_CONFIG_BASICAUTH_PASSWORD: pass
+      ME_CONFIG_MONGODB_ADMINPASSWORD: admin
+      ME_CONFIG_MONGODB_URL: mongodb://admin:admin@mongodb:27017/
     depends_on:
       - mongodb
     networks:
