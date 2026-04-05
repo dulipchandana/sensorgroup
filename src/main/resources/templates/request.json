@@ -1,0 +1,23 @@
+{
+
+  "_id": 12345678,
+
+  "name": "Room 1",
+
+  "services": ["electricity", "water", "gas"],
+
+  "readings": [
+
+    {
+
+      "type": "electricity",
+
+      "unit": 120.5,
+
+      "timestamp": "2026-04-02T10:30:00"
+
+    }
+
+  ]
+
+}

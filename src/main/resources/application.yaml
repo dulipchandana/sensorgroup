@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: sensorgroup
+  data:
+    mongodb:
+      uri: mongodb://admin:password@localhost:27017/sensorgroup?authSource=admin&retryWrites=true&w=majority&maxPoolSize=50&minPoolSize=10&serverSelectionTimeoutMS=10000&connectTimeoutMS=10000&socketTimeoutMS=10000
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
